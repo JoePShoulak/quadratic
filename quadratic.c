@@ -27,10 +27,17 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
-	float vX = -b/2*a;
+	float vX = -b/(2*a);
 	float vY = a*(vX*vX) + b*vX + c;
+	
+	if (vX == -0) {
+		vX = 0;
+	}
+	if (vY == -0) {
+		vY = 0;
+	}
 
-	printf("Vertex: (%g, %g)\n", vX, vY);
+	printf("vertex: (%g, %g)\n", vX, vY);
 
 	float d = b*b - 4*a*c;
 
@@ -43,13 +50,18 @@ int main(int argc, char *argv[]) {
 			i = 1;
 		}
 	}
-
+	
 	if (d==0) {
-		printf("root: %g", vX);
+		printf("root: %g\n", vX);
 	} else {
-		float p1 = -b/(2*a);
-		float p2 = coef/(2*a);
+		char p1[32];
+		char p2[32];
 		
+		// Add code for cases where p1 and p2 can be reduced, and reduce them
+
+		snprintf(p1, sizeof(p1), "%g", -b/(2*a));
+		snprintf(p2, sizeof(p2), "%g", coef/(2*a));
+	
 		int co = 1;
 		if (d<0) {
 			co = -1;
@@ -58,7 +70,7 @@ int main(int argc, char *argv[]) {
 		char* sign[2] = {"+", "-"};
 		
 		for (int i=0; i<=1; i++) {
-			printf("root: %g%s%g", p1, sign[i], p2);
+			printf("root: %s%s%s", p1, sign[i], p2);
 			if (d<0) {
 				printf("i");
 			}
