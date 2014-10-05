@@ -86,16 +86,15 @@ int main(int argc, char *argv[]) {
 		
 		printf("coef: %d\n", (int)coef);
 		printf("2a: %d\n", (int)(2*a));
+		
+		down = 1;
 
 		if ((int)a == a && (int)coef == coef) {
-			printf("1\n");
 			for (int i=1; i<=(int)((2*a)+coef); i++) {
-				printf("2\n");
 				if ((int)(2*a)%i == 0 && (int)(coef) % i == 0) {
-					printf("3\n");
 					a = a / i;
 					coef = coef / i;
-
+					down = down * i;
 					i = 1;
 				}
 			}
@@ -111,6 +110,9 @@ int main(int argc, char *argv[]) {
 		} else {
 			snprintf(p2, sizeof(p2), "%g", coef/(2*a));
 		}
+		
+		a = a * down;
+		coef = coef * down; 
 			
 		int co = 1;
 		if (d<0) {
@@ -126,6 +128,16 @@ int main(int argc, char *argv[]) {
 			}
 			if (d*d!=1) {
 				printf("\u221A(%g)", co*d);
+			}
+			printf("\u2245");
+			if (d>0) {
+				if (i==0) {
+					printf("%g", (-b+sqrt(d))/(2*a));
+				} else {
+					printf("%g", (-b-sqrt(d))/(2*a));
+				}
+			} else {
+				printf("%g%s%gi", (-b)/(2*a), sign[i], sqrt(-d)/(2*a));
 			}
 			printf("\n");
 		}
