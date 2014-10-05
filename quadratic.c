@@ -6,9 +6,8 @@ int main(int argc, char *argv[]) {
 	float b;
 	float c;
 
-	printf("ax^2 + bx + c\n");
-
 	if (argv[1]==NULL) {
+		printf("ax^2 + bx + c\n");
 		printf("a=");
 		scanf("%f", &a);
 		printf("b=");
@@ -107,11 +106,6 @@ int main(int argc, char *argv[]) {
 		
 		a = a * down;
 		b = b * down;
-		
-		// Add code for cases where p1 and p2 can be reduced, and reduce them
-		
-		printf("coef: %d\n", (int)coef);
-		printf("2a: %d\n", (int)(2*a));
 		
 		down = 1;
 
