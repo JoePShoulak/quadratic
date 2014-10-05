@@ -51,10 +51,36 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	
+	char p1[32];
+	
 	if (d==0) {
-		printf("root: %g\n", vX);
+		if ((int)b == 0) {
+			snprintf(p1, sizeof(p1), "");
+		} else if((int)a == a && (int)b == b) {
+			for (int i=1; i<=(int)((2*a)+b); i++) {
+				if ((int)(2*a/i) == (2*a/i) && (int)(b/i) == (b/i)) {
+					a = a / i;
+					b = b / i;
+					i = 1;
+				}
+			}
+			if (2*a == 1) {
+				snprintf(p1, sizeof(p1), "%d\u2245", -(int)b);
+			} else {
+				snprintf(p1, sizeof(p1), "(%d/%d)\u2245", -(int)b, (int)(2*a));
+			}
+		} else {
+			snprintf(p1, sizeof(p1), "%g\u2245", -b/(2*a));
+		}
+		printf("%s", p1);
+		float r = (-b/(2*a));
+		if (r == -0) {
+			printf("%g", -r);
+		} else {
+			printf("%g", r);
+		}
+		printf("\n");
 	} else {
-		char p1[32];
 		char p2[32];
 		
 		int down = 1;
